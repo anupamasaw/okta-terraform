@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    tools {
+        terraform 'Terraform-12'
+    }
+    stages{
+        stage('Git Checkout'){
+            steps{
+                git credentialsId: 'terraform-bitbucket', url: 'https://github.com/anupamasaw/okta-terraform'
+            }
+        }
+        stage('Terrafform Init'){
+             steps{
+                sh label: '', script: 'terraform init'
+            }
+        }
+        stage('Terrafform Apply'){
+             steps{
+                sh label: '', script: 'terraform apply --auto-approve' 
+            }
+        }
+    }
+    }
