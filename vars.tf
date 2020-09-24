@@ -1,8 +1,7 @@
-variable "okta_group_name" {
-  default = "Shriya"
-}
+variable "okta_group_name" {}
+
 variable "okta_group_description" {
-  default = "new okta group to be created"
+  default = "my xyz group"
 }
 
 variable "okta_api_token" {
