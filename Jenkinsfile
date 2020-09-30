@@ -26,7 +26,7 @@ pipeline {
       steps {
           sh """
               terraform apply -input=false -auto-approve -var okta_group_name=${params.groupname}
-              terraform plan -var okta_group_description=${params.description}
+              terraform apply -input=false -auto-approve -var okta_group_description=${params.description}
           """
         }
       }
