@@ -6,9 +6,12 @@ pipeline {
     stage('TF Plan') {
       steps {
           sh 'terraform init'
-          sh 'terraform plan -var okta_group_name=${params.groupname}'
-          sh 'terraform plan -var okta_group_description=${params.description}'
+          sh """
+              terraform plan -var okta_group_name=${params.groupname}
+              terraform plan -var okta_group_description=${params.description}
+          """
         }
+      
       }
 
 
@@ -22,9 +25,10 @@ pipeline {
 
     stage('TF Apply') {
       steps {
-          sh 'terraform apply -input=false -auto-approve -var okta_group_name=${params.groupname}'
-          sh 'terraform apply -input=false -auto-approve -var okta_group_description=${params.description}'
-         
+          sh """
+               terraform apply -input=false -auto-approve -var okta_group_name=${params.groupname}
+               terraform apply -input=false -auto-approve -var okta_group_description=${params.description}
+          """
         }
       }
   }
