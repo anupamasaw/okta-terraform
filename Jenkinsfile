@@ -8,8 +8,6 @@ pipeline {
           sh 'terraform init'
           sh """
               terraform plan -var okta_group_name=${params.groupname}
-          """
-          sh """
               terraform plan -var okta_group_description=${params.description}
           """
         }
