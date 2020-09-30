@@ -7,8 +7,8 @@ pipeline {
       steps {
           sh 'terraform init'
           sh """
-              terraform plan -var okta_group_name=${params.groupname}
-              terraform plan -var okta_group_description=${params.description}
+              terraform plan -out -var okta_group_name=${params.groupname}
+              terraform plan -out -var okta_group_description=${params.description}
           """
         }
       
